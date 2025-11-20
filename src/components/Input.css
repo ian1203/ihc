@@ -1,0 +1,39 @@
+.ff-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.ff-input-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ff-text);
+}
+
+.ff-input {
+  min-height: 44px;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--ff-text-muted);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--ff-text);
+  background-color: var(--ff-bg);
+  transition: border-color 0.2s ease;
+}
+
+.ff-input:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-color: var(--ff-accent);
+}
+
+.ff-input--error {
+  border-color: var(--prio-high);
+}
+
+.ff-input-error {
+  font-size: 14px;
+  color: var(--prio-high);
+}
+

@@ -1,0 +1,44 @@
+.ff-focus-session {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background-color: var(--ff-bg);
+}
+
+.ff-focus-session-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.ff-focus-timer {
+  text-align: center;
+}
+
+.ff-focus-timer-display {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--ff-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.ff-focus-timer-status {
+  font-size: 16px;
+  color: var(--ff-text-muted);
+  margin-top: var(--space-1);
+}
+
+.ff-focus-session-controls {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ff-focus-button {
+  min-width: 120px;
+}
+

@@ -1,0 +1,20 @@
+.ff-category-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px var(--space-1);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: var(--ff-surface);
+  color: var(--ff-text);
+  border: 1px solid var(--ff-text-muted);
+  white-space: nowrap;
+}
+
+/* Ensure accessible contrast - using surface background with text color */
+.ff-category-tag {
+  background-color: var(--ff-surface);
+  color: var(--ff-text);
+  border-color: var(--ff-text-muted);
+}
+

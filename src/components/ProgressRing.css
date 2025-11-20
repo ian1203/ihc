@@ -1,0 +1,31 @@
+.ff-progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ff-progress-ring-svg {
+  transform: rotate(-90deg);
+}
+
+.ff-progress-ring-background {
+  fill: none;
+  stroke: var(--ff-surface);
+}
+
+.ff-progress-ring-progress {
+  fill: none;
+  stroke: var(--ff-primary);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.ff-progress-ring-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+

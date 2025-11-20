@@ -1,0 +1,120 @@
+.ff-profile {
+  min-height: 100vh;
+  background-color: var(--ff-bg);
+}
+
+.ff-profile-header {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--ff-bg);
+  border-bottom: 1px solid var(--ff-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.ff-profile-header > *:first-child {
+  margin-right: auto;
+}
+
+.ff-profile-logout {
+  margin-left: auto;
+}
+
+.ff-profile-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ff-text);
+}
+
+.ff-profile-content {
+  padding: var(--space-4);
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ff-profile-info,
+.ff-profile-settings {
+  padding: var(--space-3);
+}
+
+.ff-profile-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 var(--space-3) 0;
+  color: var(--ff-text);
+}
+
+.ff-profile-field {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--ff-surface);
+}
+
+.ff-profile-field:last-child {
+  border-bottom: none;
+}
+
+.ff-profile-label {
+  font-weight: 500;
+  color: var(--ff-text);
+}
+
+.ff-profile-value {
+  color: var(--ff-text-muted);
+}
+
+.ff-profile-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-2);
+}
+
+.ff-profile-stat-card {
+  padding: var(--space-3);
+  text-align: center;
+}
+
+.ff-profile-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ff-primary);
+  margin-bottom: var(--space-1);
+}
+
+.ff-profile-stat-label {
+  font-size: 14px;
+  color: var(--ff-text-muted);
+}
+
+.ff-profile-settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.ff-profile-settings-item {
+  padding: var(--space-2);
+  color: var(--ff-text);
+  text-decoration: none;
+  border-radius: var(--radius);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.ff-profile-settings-item:hover {
+  background-color: var(--ff-surface);
+}
+
+.ff-profile-settings-item:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+

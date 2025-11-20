@@ -181,6 +181,36 @@ El temporizador de sesiones de enfoque:
 - Exportación de datos
 - Análisis de productividad avanzado
 
+## Deployment en Vercel
+
+FocusFlow está configurado para desplegarse fácilmente en Vercel:
+
+### Configuración de Vercel
+
+1. **Build Command**: `vite build`
+2. **Output Directory**: `dist`
+3. **SPA Rewrites**: Configurado automáticamente mediante `vercel.json`
+
+El archivo `vercel.json` incluye rewrites para que todas las rutas del cliente sirvan `index.html`, evitando errores 404 al refrescar la página en rutas como `/dashboard` o `/profile`.
+
+### Pasos para Desplegar
+
+1. Conecta tu repositorio a Vercel
+2. Vercel detectará automáticamente la configuración de Vite
+3. El build se ejecutará con `vite build`
+4. Los archivos se servirán desde el directorio `dist`
+
+### Verificación Post-Deploy
+
+Después del despliegue, verifica que las rutas funcionan correctamente:
+- Abre directamente `/dashboard` o `/profile` en el navegador
+- Refresca la página - no debería mostrar un 404
+- Navega entre diferentes rutas usando los enlaces de la aplicación
+
+### Nota sobre Node.js
+
+El proyecto requiere Node.js >= 18 (especificado en `package.json` engines).
+
 ## Licencia
 
 MIT

@@ -1,0 +1,93 @@
+.ff-signup {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-3);
+  background-color: var(--ff-bg);
+}
+
+.ff-signup-container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.ff-signup-header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.ff-signup-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 var(--space-2) 0;
+  color: var(--ff-text);
+}
+
+.ff-signup-subtitle {
+  font-size: 16px;
+  color: var(--ff-text-muted);
+  margin: 0;
+}
+
+.ff-signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ff-signup-errors {
+  padding: var(--space-2);
+  background-color: #fee;
+  border: 1px solid var(--prio-high);
+  border-radius: var(--radius);
+}
+
+.ff-signup-error-message {
+  margin: 0;
+  color: var(--prio-high);
+  font-size: 14px;
+}
+
+.ff-signup-password-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.ff-signup-password-help {
+  font-size: 14px;
+  color: var(--ff-text-muted);
+  margin: 0;
+}
+
+.ff-signup-actions {
+  margin-top: var(--space-2);
+}
+
+.ff-signup-submit {
+  width: 100%;
+}
+
+.ff-signup-login-link {
+  text-align: center;
+  font-size: 16px;
+  color: var(--ff-text-muted);
+  margin: var(--space-2) 0 0 0;
+}
+
+.ff-signup-link {
+  color: var(--ff-accent);
+  text-decoration: underline;
+}
+
+.ff-signup-link:hover {
+  color: #1e5bb8;
+}
+
+.ff-signup-link:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+

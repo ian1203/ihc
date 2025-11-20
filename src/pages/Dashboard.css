@@ -1,0 +1,158 @@
+/* Fixed top bar with app title */
+.ff-app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--ff-surface);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  padding: 0 var(--space-3);
+}
+
+.ff-app-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ff-text);
+  margin: 0;
+}
+
+.ff-app-logout {
+  font-size: 14px;
+  padding: var(--space-1) var(--space-2);
+}
+
+/* Dashboard container with padding for fixed header */
+.ff-dashboard-container {
+  margin-top: 60px;
+  background-color: var(--ff-bg);
+  min-height: calc(100vh - 60px);
+}
+
+.ff-dashboard-greeting-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-3) var(--space-2);
+}
+
+.ff-dashboard-greeting {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ff-text);
+}
+
+.ff-dashboard-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--space-3) var(--space-4);
+}
+
+.ff-dashboard-section {
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-3);
+}
+
+.ff-dashboard-section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 var(--space-2) 0;
+  color: var(--ff-text);
+  padding-bottom: var(--space-1);
+}
+
+.ff-dashboard-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ff-task-card {
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.ff-task-card:hover {
+  background-color: #e8eaec;
+}
+
+.ff-task-card:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.ff-task-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.ff-task-card-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.ff-task-card-completed {
+  opacity: 0.7;
+}
+
+.ff-dashboard-section-completed {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--ff-surface);
+}
+
+.ff-dashboard-empty {
+  color: var(--ff-text-muted);
+  font-style: italic;
+  padding: var(--space-2);
+  font-size: 16px;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .ff-dashboard-container {
+    margin-top: 60px;
+  }
+
+  .ff-dashboard-greeting-wrapper,
+  .ff-dashboard-main {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+
+  .ff-dashboard-section {
+    margin-bottom: var(--space-3);
+  }
+
+  .ff-dashboard-section-title {
+    font-size: 20px;
+  }
+}
+
+.ff-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ff-task-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.ff-task-form-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+  margin-top: var(--space-2);
+}
+

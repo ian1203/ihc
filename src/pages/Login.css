@@ -1,0 +1,81 @@
+.ff-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-3);
+  background-color: var(--ff-bg);
+}
+
+.ff-login-container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.ff-login-header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.ff-login-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 var(--space-2) 0;
+  color: var(--ff-text);
+}
+
+.ff-login-subtitle {
+  font-size: 16px;
+  color: var(--ff-text-muted);
+  margin: 0;
+}
+
+.ff-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ff-login-errors {
+  padding: var(--space-2);
+  background-color: #fee;
+  border: 1px solid var(--prio-high);
+  border-radius: var(--radius);
+}
+
+.ff-login-error-message {
+  margin: 0;
+  color: var(--prio-high);
+  font-size: 14px;
+}
+
+.ff-login-actions {
+  margin-top: var(--space-2);
+}
+
+.ff-login-submit {
+  width: 100%;
+}
+
+.ff-login-signup-link {
+  text-align: center;
+  font-size: 16px;
+  color: var(--ff-text-muted);
+  margin: var(--space-2) 0 0 0;
+}
+
+.ff-login-link {
+  color: var(--ff-accent);
+  text-decoration: underline;
+}
+
+.ff-login-link:hover {
+  color: #1e5bb8;
+}
+
+.ff-login-link:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+

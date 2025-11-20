@@ -1,0 +1,62 @@
+.ff-task-detail {
+  min-height: 100vh;
+  background-color: var(--ff-bg);
+}
+
+.ff-task-detail-header {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--ff-bg);
+  border-bottom: 1px solid var(--ff-surface);
+}
+
+.ff-task-detail-content {
+  padding: var(--space-4);
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ff-task-detail-card {
+  padding: var(--space-3);
+}
+
+.ff-task-detail-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 var(--space-2) 0;
+  color: var(--ff-text);
+}
+
+.ff-task-detail-subtasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ff-task-detail-add-subtask {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+  margin-top: var(--space-2);
+}
+
+.ff-task-detail-add-subtask .ff-input-wrapper {
+  flex: 1;
+}
+
+.ff-task-detail-actions {
+  margin-top: var(--space-2);
+}
+
+.ff-task-detail-focus-button {
+  width: 100%;
+}
+
+.ff-task-detail-reminder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+

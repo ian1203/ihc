@@ -1,0 +1,47 @@
+.ff-fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--ff-primary);
+  color: var(--ff-primary-contrast);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  z-index: 100;
+}
+
+.ff-fab:hover {
+  background-color: #0f6b5a;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+.ff-fab:active {
+  background-color: #0d5a4b;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.ff-fab:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Responsive: adjust FAB position on mobile */
+@media (max-width: 768px) {
+  .ff-fab {
+    bottom: 24px;
+    right: 24px;
+  }
+}
+

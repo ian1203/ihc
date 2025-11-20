@@ -1,0 +1,82 @@
+.ff-reminder-notification {
+  position: fixed;
+  top: 80px;
+  right: var(--space-3);
+  z-index: 2000;
+  max-width: 400px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.ff-reminder-notification-content {
+  background-color: var(--ff-bg);
+  border: 2px solid var(--ff-primary);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: var(--space-3);
+}
+
+.ff-reminder-notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.ff-reminder-notification-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ff-primary);
+}
+
+.ff-reminder-notification-close {
+  min-width: 32px;
+  min-height: 32px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: var(--ff-text-muted);
+  cursor: pointer;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.ff-reminder-notification-close:hover {
+  background-color: var(--ff-surface);
+}
+
+.ff-reminder-notification-close:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.ff-reminder-notification-message {
+  font-size: 16px;
+  color: var(--ff-text);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ff-reminder-notification {
+    top: 70px;
+    right: var(--space-2);
+    left: var(--space-2);
+    max-width: none;
+  }
+}
+

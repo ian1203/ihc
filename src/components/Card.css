@@ -1,0 +1,8 @@
+.ff-card {
+  background-color: var(--ff-surface);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
