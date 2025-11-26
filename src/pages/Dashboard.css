@@ -5,7 +5,8 @@
   left: 0;
   right: 0;
   height: 60px;
-  background-color: var(--ff-surface);
+  background-color: rgba(245, 247, 248, 0.9);
+  backdrop-filter: blur(12px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
@@ -52,6 +53,19 @@
   padding: 0 var(--space-3) var(--space-4);
 }
 
+/* Layout: sidebar + content on desktop */
+.ff-dashboard-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 1024px) {
+  .ff-dashboard-layout {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+}
+
 .ff-dashboard-section {
   margin-bottom: var(--space-4);
   padding-top: var(--space-3);
@@ -71,13 +85,29 @@
   gap: var(--space-2);
 }
 
+.ff-dashboard-tasks-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .ff-dashboard-tasks-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .ff-task-card {
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   cursor: pointer;
+  border-left: 4px solid transparent;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .ff-task-card:hover {
-  background-color: #e8eaec;
+  background-color: #f1f5f9;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.08);
 }
 
 .ff-task-card:focus-visible {
@@ -100,7 +130,24 @@
 }
 
 .ff-task-card-completed {
-  opacity: 0.7;
+  opacity: 0.8;
+}
+
+/* Priority accents using new palette */
+.ff-task-card--high {
+  border-left-color: #ef4444;
+}
+
+.ff-task-card--mid {
+  border-left-color: #f59e0b;
+}
+
+.ff-task-card--low {
+  border-left-color: #3b82f6;
+}
+
+.ff-task-card--completed {
+  border-left-color: #22c55e;
 }
 
 .ff-dashboard-section-completed {
@@ -114,6 +161,187 @@
   font-style: italic;
   padding: var(--space-2);
   font-size: 16px;
+}
+
+.ff-dashboard-empty-card {
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+/* Sidebar */
+.ff-dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Progress indicator */
+.ff-dashboard-progress-bar-wrapper {
+  margin-top: var(--space-2);
+}
+
+.ff-dashboard-progress-bar-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background-color: #e2e8f0;
+  overflow: hidden;
+}
+
+.ff-dashboard-progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #14b8a6, #22c55e);
+  transition: width 0.3s ease-out;
+}
+
+.ff-dashboard-progress-label {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Stats */
+.ff-dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.ff-dashboard-stat-card {
+  padding: var(--space-2);
+  border-radius: var(--radius);
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 72px;
+}
+
+.ff-dashboard-stat-label {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.ff-dashboard-stat-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Filters */
+.ff-dashboard-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ff-dashboard-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ff-dashboard-filter-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.ff-dashboard-filter-label-inline {
+  font-size: 14px;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ff-dashboard-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ff-dashboard-filter-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  font-size: 13px;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.ff-dashboard-filter-chip--active {
+  border-color: #14b8a6;
+  background-color: #ecfeff;
+  color: #0f172a;
+}
+
+.ff-dashboard-search-input {
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.ff-dashboard-search-input:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-color: #14b8a6;
+}
+
+.ff-dashboard-filter-toggle {
+  margin-top: 4px;
+}
+
+/* Task meta info */
+.ff-task-card-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ff-task-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.ff-task-card-date {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ff-task-card-subtasks {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ff-task-card-reminder {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ff-task-card--dragging {
+  opacity: 0.7;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
+}
+
+/* Content column */
+.ff-dashboard-content {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive adjustments for mobile */
@@ -155,4 +383,21 @@
   justify-content: flex-end;
   margin-top: var(--space-2);
 }
+
+/* Skip link for accessibility */
+.ff-skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  padding: 8px 12px;
+  background-color: #0f172a;
+  color: #f9fafb;
+  border-radius: 999px;
+  z-index: 1100;
+}
+
+.ff-skip-link:focus {
+  left: 12px;
+}
+
 
