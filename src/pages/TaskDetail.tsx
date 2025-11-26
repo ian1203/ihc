@@ -115,27 +115,32 @@ export const TaskDetail: React.FC = () => {
       </header>
       <div className="ff-task-detail-content">
         <Card className="ff-task-detail-card">
-          <Input
-            label="Título de la tarea"
-            value={task.title}
-            onChange={(e) => updateTask({ title: e.target.value })}
-            onBlur={() => {
-              if (!currentUser) return;
-              const tasks = getTasks(currentUser.id);
-              const updatedTasks = tasks.map(t => t.id === task.id ? task : t);
-              saveTasks(currentUser.id, updatedTasks);
-            }}
-          />
-          <label htmlFor="task-detail-description" className="ff-input-label ff-task-detail-description-label">
-            Descripción
-          </label>
-          <textarea
-            id="task-detail-description"
-            className="ff-input ff-input-textarea ff-task-detail-description-input"
-            value={task.description || ''}
-            onChange={(e) => updateTask({ description: e.target.value })}
-            placeholder="Añade detalles importantes de la tarea..."
-          />
+          <div className="ff-task-form-field">
+            <Input
+              label="Título de la tarea"
+              value={task.title}
+              onChange={(e) => updateTask({ title: e.target.value })}
+              onBlur={() => {
+                if (!currentUser) return;
+                const tasks = getTasks(currentUser.id);
+                const updatedTasks = tasks.map(t => t.id === task.id ? task : t);
+                saveTasks(currentUser.id, updatedTasks);
+              }}
+            />
+          </div>
+          <div className="ff-task-form-field">
+            <label htmlFor="task-detail-description" className="ff-input-label">
+              Descripción
+            </label>
+            <textarea
+              id="task-detail-description"
+              className="ff-input ff-input-textarea"
+              value={task.description || ''}
+              onChange={(e) => updateTask({ description: e.target.value })}
+              placeholder="Añade detalles importantes de la tarea..."
+              rows={4}
+            />
+          </div>
         </Card>
 
         <Card className="ff-task-detail-card">
