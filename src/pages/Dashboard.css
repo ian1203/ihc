@@ -129,6 +129,18 @@
   flex: 1;
 }
 
+.ff-task-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (min-width: 640px) {
+  .ff-task-card-actions {
+    flex-direction: row;
+  }
+}
+
 .ff-task-card-completed {
   opacity: 0.8;
 }
@@ -382,6 +394,27 @@
   gap: var(--space-2);
   justify-content: flex-end;
   margin-top: var(--space-2);
+}
+
+.ff-input-textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.ff-dashboard-undo-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0f172a;
+  color: #f9fafb;
+  padding: 8px 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.25);
+  z-index: 1500;
 }
 
 /* Skip link for accessibility */

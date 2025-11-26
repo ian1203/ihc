@@ -126,6 +126,16 @@ export const TaskDetail: React.FC = () => {
               saveTasks(currentUser.id, updatedTasks);
             }}
           />
+          <label htmlFor="task-detail-description" className="ff-input-label ff-task-detail-description-label">
+            Descripción
+          </label>
+          <textarea
+            id="task-detail-description"
+            className="ff-input ff-input-textarea ff-task-detail-description-input"
+            value={task.description || ''}
+            onChange={(e) => updateTask({ description: e.target.value })}
+            placeholder="Añade detalles importantes de la tarea..."
+          />
         </Card>
 
         <Card className="ff-task-detail-card">

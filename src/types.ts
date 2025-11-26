@@ -15,6 +15,7 @@ export interface Task {
   subtasks: Subtask[];
   reminder: boolean;
   reminderTime?: number; // timestamp in milliseconds
+  description?: string;
   createdAt: number;
 }
 

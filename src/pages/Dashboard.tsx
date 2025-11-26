@@ -23,10 +23,13 @@ export const Dashboard: React.FC = () => {
   const [newTaskPriority, setNewTaskPriority] = useState<Priority>('mid');
   const [newTaskReminder, setNewTaskReminder] = useState(false);
   const [newTaskReminderTime, setNewTaskReminderTime] = useState('');
+  const [newTaskDescription, setNewTaskDescription] = useState('');
   const [filterCategory, setFilterCategory] = useState<'all' | 'Trabajo' | 'Personal' | 'Compras'>('all');
   const [showCompleted, setShowCompleted] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [draggingTaskId, setDraggingTaskId] = useState<string | null>(null);
+  const [lastDeleted, setLastDeleted] = useState<{ task: Task; index: number } | null>(null);
+  const [showUndo, setShowUndo] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -69,6 +72,7 @@ export const Dashboard: React.FC = () => {
       subtasks: [],
       reminder: newTaskReminder,
       reminderTime,
+      description: newTaskDescription.trim() || undefined,
       createdAt: Date.now(),
     };
 
@@ -76,6 +80,7 @@ export const Dashboard: React.FC = () => {
     setTasks(updated);
     saveTasks(currentUser.id, updated);
     setNewTaskTitle('');
+    setNewTaskDescription('');
     setNewTaskReminder(false);
     setNewTaskReminderTime('');
     setIsModalOpen(false);
@@ -171,6 +176,34 @@ export const Dashboard: React.FC = () => {
     setDraggingTaskId(null);
   };
 
+  const handleDeleteTask = (taskId: string) => {
+    if (!currentUser) return;
+    const index = tasks.findIndex(t => t.id === taskId);
+    if (index === -1) return;
+    const task = tasks[index];
+    const updated = tasks.filter(t => t.id !== taskId);
+    setTasks(updated);
+    saveTasks(currentUser.id, updated);
+    setLastDeleted({ task, index });
+    setShowUndo(true);
+
+    window.setTimeout(() => {
+      setShowUndo(false);
+      setLastDeleted(null);
+    }, 5000);
+  };
+
+  const handleUndoDelete = () => {
+    if (!currentUser || !lastDeleted) return;
+    const updated = [...tasks];
+    const insertIndex = Math.min(lastDeleted.index, updated.length);
+    updated.splice(insertIndex, 0, lastDeleted.task);
+    setTasks(updated);
+    saveTasks(currentUser.id, updated);
+    setLastDeleted(null);
+    setShowUndo(false);
+  };
+
   return (
     <>
       <a href="#dashboard-main" className="ff-skip-link">
@@ -194,6 +227,19 @@ export const Dashboard: React.FC = () => {
           </p>
         </div>
         <main id="dashboard-main" className="ff-dashboard-main ff-dashboard-layout">
+          {showUndo && lastDeleted && (
+            <div className="ff-dashboard-undo-toast" role="status" aria-live="polite">
+              <span>Tarea eliminada</span>
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={handleUndoDelete}
+                aria-label="Deshacer eliminación de tarea"
+              >
+                Deshacer
+              </Button>
+            </div>
+          )}
           <aside className="ff-dashboard-sidebar" aria-label="Filtros y estadísticas rápidas">
             <section className="ff-dashboard-progress" aria-label="Progreso general">
               <h2 className="ff-dashboard-section-title ff-dashboard-section-title-sm">
@@ -342,13 +388,22 @@ export const Dashboard: React.FC = () => {
                               )}
                             </div>
                           </div>
-                          <Button
-                            variant="ghost"
-                            onClick={() => navigate(`/task/${task.id}`)}
-                            aria-label={`Editar tarea: ${task.title}`}
-                          >
-                            Editar
-                          </Button>
+                          <div className="ff-task-card-actions">
+                            <Button
+                              variant="ghost"
+                              onClick={() => navigate(`/task/${task.id}`)}
+                              aria-label={`Editar tarea: ${task.title}`}
+                            >
+                              Editar
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              onClick={() => handleDeleteTask(task.id)}
+                              aria-label={`Eliminar tarea: ${task.title}`}
+                            >
+                              Eliminar
+                            </Button>
+                          </div>
                         </div>
                       </Card>
                     ))
@@ -409,13 +464,22 @@ export const Dashboard: React.FC = () => {
                               )}
                             </div>
                           </div>
-                          <Button
-                            variant="ghost"
-                            onClick={() => navigate(`/task/${task.id}`)}
-                            aria-label={`Editar tarea: ${task.title}`}
-                          >
-                            Editar
-                          </Button>
+                          <div className="ff-task-card-actions">
+                            <Button
+                              variant="ghost"
+                              onClick={() => navigate(`/task/${task.id}`)}
+                              aria-label={`Editar tarea: ${task.title}`}
+                            >
+                              Editar
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              onClick={() => handleDeleteTask(task.id)}
+                              aria-label={`Eliminar tarea: ${task.title}`}
+                            >
+                              Eliminar
+                            </Button>
+                          </div>
                         </div>
                       </Card>
                     ))
@@ -462,6 +526,16 @@ export const Dashboard: React.FC = () => {
             <PriorityPills
               value={newTaskPriority}
               onChange={setNewTaskPriority}
+            />
+          </div>
+          <div className="ff-task-form-field">
+            <label htmlFor="task-description" className="ff-input-label">Descripción</label>
+            <textarea
+              id="task-description"
+              className="ff-input ff-input-textarea"
+              value={newTaskDescription}
+              onChange={(e) => setNewTaskDescription(e.target.value)}
+              placeholder="Añade detalles importantes de la tarea..."
             />
           </div>
           <div className="ff-task-form-field">
